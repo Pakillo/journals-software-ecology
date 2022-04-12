@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <br>
 
-A crowd-sourced directory of journals publishing **software papers** related to ecology, evolution & environment: 
+A directory of journals publishing **software papers** related to ecology, evolution & environment: 
 
 Check out the [Software Sustainability Institute](https://www.software.ac.uk/which-journals-should-i-publish-my-software) for a more comprehensive list (all disciplines). 
 
@@ -53,7 +53,7 @@ DT::datatable(journals, escape = FALSE, #filter = "top",
 
 OA (Open Access):
 
-  - Yes: All articles are published open access
+  - Yes: All articles are published open access, sometimes after paying an Article Processing Change (APC) fee. 
   
   - Hybrid: Some articles are published open access, usually after paying an Article Processing Change (APC) fee. 
   
