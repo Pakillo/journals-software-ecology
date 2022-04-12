@@ -53,9 +53,9 @@ DT::datatable(journals, escape = FALSE, #filter = "top",
 
 OA (Open Access):
 
-  - Yes: All articles are published open access, sometimes after paying an Article Processing Change (APC) fee. 
+  - **Yes**: All articles are published open access, sometimes after paying an Article Processing Change (APC) fee. 
   
-  - Hybrid: Some articles are published open access, usually after paying an Article Processing Change (APC) fee. 
+  - **Hybrid**: Some articles are published open access, usually after paying an Article Processing Change (APC) fee. 
   
 Article Processing Charges (APC) may not be up to date. Also, many journals offer fee waivers and discounts. Please check the journal website.
 
