@@ -29,7 +29,7 @@ df <- readr::read_csv("journals_software_ecology.csv") %>%
   select(-Website) %>% 
   mutate(Issn = stringr::str_remove(ISSN, "-"))
 
-sjr <- readr::read_csv2("scimagojr2020.csv") %>% 
+sjr <- readr::read_csv2("scimagojr2022.csv") %>% 
   select(Issn, SJR, `SJR Best Quartile`) %>% 
   tidyr::separate(Issn, into = c("Issn1", "Issn2"), sep = ", ") %>% 
   mutate(issn1 = Issn1 %in% df$Issn,
