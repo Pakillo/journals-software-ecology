@@ -23,27 +23,25 @@ For **Data Papers**, check out GBIF directory of journals publishing biodiversit
 library(dplyr)
 library(DT)
 
-df <- readr::read_csv("journals_software_ecology.csv") %>% 
+df <- readr::read_csv("journals_software_ecology.csv") |>  
   mutate(journal = paste("<a href='", Website, "'", ' target="_blank">', 
-                            Journal, "</a>", sep = "")) %>% 
-  select(-Website) %>% 
+                            Journal, "</a>", sep = "")) |> 
+  select(-Website) |> 
   mutate(Issn = stringr::str_remove(ISSN, "-"))
 
-sjr <- readr::read_csv2("scimagojr2022.csv") %>% 
-  select(Issn, SJR, `SJR Best Quartile`) %>% 
-  tidyr::separate(Issn, into = c("Issn1", "Issn2"), sep = ", ") %>% 
-  mutate(issn1 = Issn1 %in% df$Issn,
-         issn2 = Issn2 %in% df$Issn) %>% 
-  filter(issn1 == TRUE | issn2 == TRUE) %>% 
-  mutate(Issn = ifelse(issn1 == TRUE, Issn1, Issn2)) %>% 
+sjr <- readr::read_csv2("scimagojr2024.csv") |> 
+  select(Title, Issn, SJR, `SJR Best Quartile`) |> 
+  tidyr::separate(Issn, into = c("Issn1", "Issn2"), sep = ", ", fill = "right") |> 
+  filter(!is.na(Issn1) | !is.na(Issn2)) |> 
+  mutate(Issn = ifelse(!is.na(Issn1), Issn1, Issn2)) |> 
   select(Issn, SJR, `SJR Best Quartile`)
   
 
-journals <- left_join(df, sjr, by = "Issn") %>% 
-  arrange(Journal) %>% 
-  select(-Journal, -ISSN, -Issn) %>% 
+journals <- left_join(df, sjr, by = "Issn") |> 
+  arrange(Journal) |> 
+  select(-Journal, -ISSN, -Issn) |> 
   rename(Journal = journal,
-         `Scimago\nJournal Rank` = SJR) %>% 
+         `Scimago\nJournal Rank` = SJR) |> 
   relocate(Journal)
 
 
@@ -59,7 +57,7 @@ OA (Open Access):
   
 Article Processing Charges (APC) may not be up to date. Also, many journals offer fee waivers and discounts. Please check the journal website.
 
-Journal Rank data from [Scimago](https://www.scimagojr.com/journalrank.php). Please visit [their website](https://www.scimagojr.com/journalrank.php) for more details.
+Journal Rank data from [Scimago](https://www.scimagojr.com/journalrank.php). Please visit their [website](https://www.scimagojr.com/journalrank.php) for more details.
 
 ### Contributing
 

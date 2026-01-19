@@ -2,5 +2,4 @@
 .Rhistory
 .RData
 .Ruserdata
-scimagojr2020.csv
-scimagojr2022.csv
+scimagojr*.csv
